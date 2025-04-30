@@ -12,6 +12,8 @@ def normalize_text(texto):
     tokens_normalizados = []
     for token in doc:
         if not token.is_stop and token.pos_ not in ['DET', 'ADP', 'CONJ', 'PRON']:
+            if token.lemma_ == '-':
+                continue
             tokens_normalizados.append(token.lemma_)
     texto_normalizado = " ".join(tokens_normalizados)
     return texto_normalizado
